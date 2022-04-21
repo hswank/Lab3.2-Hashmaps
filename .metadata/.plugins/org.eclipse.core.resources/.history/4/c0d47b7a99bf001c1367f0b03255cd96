@@ -1,0 +1,100 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class GuenthersMarket {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		boolean customerExit = false;
+
+		ArrayList<String> product = new ArrayList<String>();
+		product.add("apple");
+		product.add("banana");
+		product.add("cauliflower");
+		product.add("dragonfruit");
+		product.add("Elderberry");
+		product.add("figs");
+		product.add("grapefruit");
+		product.add("honeydew");
+
+		ArrayList<Double> price = new ArrayList<Double>();
+		price.add(0.99);
+		price.add(0.59);
+		price.add(1.59);
+		price.add(2.19);
+		price.add(1.79);
+		price.add(2.09);
+		price.add(1.99);
+		price.add(3.49);
+
+		printMenu(product, price);
+
+		ArrayList<String> customerOrder = new ArrayList<String>();
+		ArrayList<Double> customerOrderPrice = new ArrayList<Double>();
+
+		while (!customerExit) {
+
+			System.out.print("What item number would you like to order?");
+			int itemNum = input.nextInt();
+			if (itemNum > 0 && itemNum < 9) {
+				customerOrder.add(product.get(itemNum));
+				customerOrderPrice.add(price.get(itemNum));
+
+				System.out.print("Would you like to order anything else (y/n)?");
+				String userCont = input.next();
+				if (userCont.equalsIgnoreCase("n")) {
+					customerExit = true;
+				}
+			} else {
+				System.out.println("Sorry, we don't have those.  Please try again.");
+			}
+			
+			printMenu(product, price);
+
+		}
+		System.out.println("Thanks for your order!");
+		System.out.println("Here's what you got:");
+		for (int i = 0; i < customerOrder.size(); i++) {
+			System.out.printf("%-18s$.2f", customerOrder.get(i), customerOrderPrice.get(i));
+		}
+	}
+
+	public static void printMenu(ArrayList<String> product, ArrayList<Double> price) {
+		System.out.printf("Welcome To Guenther's Market!%n%n%-20s%s%n", "Item", "Price");
+		System.out.println("==============================");
+
+		for (int i = 0; i < product.size(); i++) {
+			System.out.printf("%d %-17s $%.2f%n", i + 1, product.get(i), price.get(i));
+		}
+		
+		System.out.println();
+	}
+	
+	public static void avgPrice(ArrayList<Double> price) {
+		double sum = 0;
+		for (int i = 0; i < price.size(); i++) {
+			sum += price.get(i);
+		}
+		double total = sum / price.size();
+		System.out.println("Average price per item in order was $" + total);
+	}
+	
+	public static void highestPrice(ArrayList<Double> price) {
+		double highest = 0;
+		for (int i = 0; i < price.size(); i++) {
+			if (price.get(i) > highest) {
+				highest = price.get(i);
+			}
+		}
+	}
+	
+	public static void lowestPrice(ArrayList<Double> price) {
+		double lowest = 0;
+		for (int i = 0; i < price.size(); i++) {
+			if (price.get(i) < lowest) {
+				lowest = price.get(i);
+			}
+		}
+	}
+
+}

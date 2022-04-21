@@ -1,0 +1,20 @@
+
+public class GuenthersMarket {
+
+	public static void main(String[] args) {
+		String[] product = {"apple", "banana", "cauliflower", "dragonfruit", "Elderberry", "figs", "grapefruit", "honeydew"};
+		double[] price = {0.99, 0.59, 1.59, 2.19, 1.79, 2.09, 1.99, 3.49};
+		
+		printMenu(product, price);
+	}
+	
+	public static void printMenu(String[] product, double[] price) {
+		System.out.printf("Welcome To Guenther's Market!%n%n%20s%s", "Item", "Price");
+		System.out.println("==============================");
+		
+		for (int i = 0; i < product.length; i++) {
+			System.out.printf("%d %18s %d%n", i, product[i], price[i]);
+		}
+	}
+
+}

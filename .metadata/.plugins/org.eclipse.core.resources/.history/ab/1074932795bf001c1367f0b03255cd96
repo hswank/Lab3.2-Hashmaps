@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+
+public class GuenthersMarket {
+
+	public static void main(String[] args) {
+		ArrayList<String> product = new ArrayList<String>();
+		product.add("apple");
+		product.add("banana");
+		product.add("cauliflower");
+		product.add("dragonfruit");
+		product.add("Elderberry");
+		product.add("figs");
+		product.add("grapefruit");
+		product.add("honeydew");
+		
+		ArrayList<Double> price = new ArrayList<Double>();
+		price.add(0.99);
+		price.add(0.59);
+		price.add(1.59);
+		price.add(2.19);
+		price.add(1.79);
+		price.add(2.09);
+		price.add(1.99);
+		price.add(3.49);
+		
+		printMenu(product, price);
+	}
+	
+	public static void printMenu(ArrayList<String> product, ArrayList<Double> price) {
+		System.out.printf("Welcome To Guenther's Market!%n%n%-20s%s%n", "Item", "Price");
+		System.out.println("==============================");
+		
+		for (int i = 0; i < product.size(); i++) {
+			System.out.printf("%d %-18s %.2f%n", i + 1, product.get(i), price.get(i));
+		}
+	}
+
+}
